@@ -1,0 +1,77 @@
+.idcard {
+  margin-top: 20px;
+}
+
+#loader {
+  display: none;
+}
+
+#text {
+  text: block;
+}
+
+.mainbody {
+  background: #39578a;
+  margin: 0px;
+  border-radius: 10px;
+}
+
+.flexid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.idcontent {
+  background: white;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.userimage {
+  padding: 5px;
+  height: 100px;
+  width: 150px;
+  height: 50%;
+  border-radius: 10px;
+  color: white;
+}
+
+.userimage > img {
+  height: 100px;
+  width: 100px;
+}
+
+.flexcontent {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo > span > b {
+  font-size: 10px;
+  color: #39578a;
+}
+.livemore {
+  text-align: right;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.infocard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 30px;
+}
+
+.infocard > ion-icon {
+  color: forestgreen;
+  font-size: 20px;
+}
+
+.infocard > ion-text {
+  font-size: 12px;
+  color: gray;
+}
