@@ -60,7 +60,7 @@ const testAxios = () => {
 function downloadElementAsImage(elementId) {
   var element = document.getElementById(elementId);
 
-  html2canvas(element).then(function (canvas) {
+  html2canvas(element, {allowTaint:true}).then(function (canvas) {
     var dataUrl = canvas.toDataURL("image/png");
 
     var link = document.createElement("a");
