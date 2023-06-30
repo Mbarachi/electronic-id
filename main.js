@@ -32,7 +32,6 @@ const testAxios = () => {
       res.forEach((element) => {
         let dateofBirth = moment(element.dob).format("DD/MM/YYYY");
         let dateofBirthFromInput = moment(dob).format("DD/MM/YYYY");
-        console.log(dateofBirth === dateofBirthFromInput);
         if (dateofBirth === dateofBirthFromInput) {
           document.getElementById("enrolleeId").innerHTML =
             element.legacycode + "/" + "0";
@@ -46,15 +45,13 @@ const testAxios = () => {
           ).src = `https://apps.hygeiahmo.com:444/cba/uploads/enrolment-uploads/pictures/${
             element.pixpath.split("\\")[2]
           }`;
-        } else {
-          alert("Details don't match, Please try again!");
+          document.getElementById("capture").style.display = "block";
         }
       });
     })
     .catch(function (error) {
       document.getElementById("loader").style.display = "none";
       document.getElementById("text").style.display = "block";
-
       alert("Something went wrong, please try again!");
       console.error(error);
     });
@@ -63,15 +60,18 @@ const testAxios = () => {
 function downloadElementAsImage(elementId) {
   var element = document.getElementById(elementId);
 
-  html2canvas(element).then(function (canvas) {
-    var dataUrl = canvas.toDataURL("image/png");
+  rasterizeHTML
+    .drawHTML(element.outerHTML)
+    .then(function (dataUrl) {
+      var link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "image.png";
 
-    var link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = "image.png";
-
-    link.click();
-  });
+      link.click();
+    })
+    .catch(function (error) {
+      console.error("Error:", error);
+    });
 }
 
 // Usage:

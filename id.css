@@ -10,6 +10,10 @@
   text: block;
 }
 
+#capture {
+  display: none;
+}
+
 .mainbody {
   background: #39578a;
   margin: 0px;
