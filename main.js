@@ -60,18 +60,15 @@ const testAxios = () => {
 function downloadElementAsImage(elementId) {
   var element = document.getElementById(elementId);
 
-  rasterizeHTML
-    .drawHTML(element.outerHTML)
-    .then(function (dataUrl) {
-      var link = document.createElement("a");
-      link.href = dataUrl;
-      link.download = "image.png";
+  html2canvas(element).then(function (canvas) {
+    var dataUrl = canvas.toDataURL("image/png");
 
-      link.click();
-    })
-    .catch(function (error) {
-      console.error("Error:", error);
-    });
+    var link = document.createElement("a");
+    link.href = dataUrl;
+    link.download = "image.png";
+
+    link.click();
+  });
 }
 
 // Usage:
