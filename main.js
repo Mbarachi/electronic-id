@@ -59,12 +59,14 @@ const testAxios = () => {
 
 function downloadElementAsImage(elementId) {
   var element = document.getElementById(elementId);
-  html2canvas(element, {letterRendering: 1, allowTaint: true, useCORS: true}).then(function (canvas) {
-    var dataUrl = canvas.toDataURL("image/png");
-    var link = document.createElement("a");
-    link.href = dataUrl;
-    link.download = "image.png";
-
-    link.click();
+  html2canvas(element, {
+    useCORS: true,
+    onrendered: function (canvas) {
+      var dataUrl = canvas.toDataURL("image/png");
+      var link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "image.png";
+      link.click();
+    },
   });
 }
